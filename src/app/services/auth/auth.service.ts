@@ -31,6 +31,10 @@ export class AuthService {
     return Auth.signInWithEmailAndPassword(this.auth, mail, password);
   }
 
+  authentifyWithGoogle() {
+    return Auth.signInWithPopup(this.auth, new Auth.GoogleAuthProvider());
+  }
+
   disconnect() {
     this.user = null;
     return this.auth.signOut();

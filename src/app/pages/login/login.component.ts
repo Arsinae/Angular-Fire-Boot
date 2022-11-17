@@ -97,16 +97,35 @@ export class LoginComponent implements OnInit {
       if (res.user) {
         const newUser: User = User.setNewUser(this.signUpForm);
         newUser.uuid = res.user.uid;
-        this.userService.createUser(res.user.uid, newUser).then(resUser => {
-          this.snackbar.open(this.translate.instant('SIGNUP.CREATED'), '', {panelClass: 'primary-snackbar', duration: 4000});
-          this.authService.setUser(newUser);
-          this.router.navigate(['/home']);
-        })
+        this.storeUserInfo(newUser, res.user.uid);
       }
     }).catch(err => {
       console.log(err);
       const msg = this.authService.getAuthError(err.code);
       this.snackbar.open(this.translate.instant(`SIGNUP.${msg}`), '', {panelClass: 'danger-snackbar', duration: 4000});
+    })
+  }
+
+  googleAuth() {
+    this.authService.authentifyWithGoogle().then(credential => {
+      console.log(credential);
+      if (credential.operationType === 'signIn') {
+        const newUser: User = User.setNewUserFromAuthProvider(credential);
+        newUser.uuid = credential.user.uid;
+        this.storeUserInfo(newUser, credential.user.uid);
+      } else {
+
+      }
+    }).catch(err => {
+
+    })
+  }
+
+  storeUserInfo(user: User, uuid: string) {
+    this.userService.createUser(uuid, user).then(resUser => {
+      this.snackbar.open(this.translate.instant('SIGNUP.CREATED'), '', {panelClass: 'primary-snackbar', duration: 4000});
+      this.authService.setUser(user);
+      this.router.navigate(['/home']);
     })
   }
 

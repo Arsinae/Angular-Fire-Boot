@@ -1,3 +1,4 @@
+import { UserCredential } from "@angular/fire/auth";
 import { FormGroup } from "@angular/forms";
 
 export class User {
@@ -9,6 +10,13 @@ export class User {
   static setNewUser(formGroup: FormGroup) {
     const user: User = {
       uuid: undefined, email: formGroup.get('email')?.value, username: formGroup.get('username')?.value, lastLogin: new Date()
+    };
+    return user;
+  }
+
+  static setNewUserFromAuthProvider(credential: UserCredential) {
+    const user: User = {
+      uuid: undefined, email: credential.user.email ? credential.user.email : '', username: credential.user.displayName ? credential.user.displayName: '', lastLogin: new Date()
     };
     return user;
   }
