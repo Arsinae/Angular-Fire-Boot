@@ -8,6 +8,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDividerModule } from '@angular/material/divider';
 import { BrowserModule } from '@angular/platform-browser';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -33,6 +34,7 @@ import { AuthActionComponent } from './auth-action/auth-action.component';
     MatTooltipModule,
     MatSnackBarModule,
     MatFormFieldModule,
+    MatDividerModule,
     MatDialogModule,
     MatCheckboxModule,
     TranslateModule

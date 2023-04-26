@@ -8,7 +8,7 @@
 
   <div class="form-container p-4 dark-theme">
     <ng-container *ngIf="type === 'login'; else signUp">
-      <form class="d-flex flex-column gap-2" [formGroup]="loginForm" (ngSubmit)="connect()">
+      <form class="d-flex flex-column gap-2 my-2" [formGroup]="loginForm" (ngSubmit)="connect()">
         <mat-form-field class="flex-1">
           <input matInput type="email" formControlName="email" [placeholder]="'COMMON.MAIL' | translate">
         </mat-form-field>
@@ -31,31 +31,40 @@
 
       </form>
 
-      <div class="d-flex">
-        <button mat-raised-button (click)="googleAuth()">Google</button>
+      <mat-divider></mat-divider>
 
-        <button mat-button class="flex-1" color="accent" (click)="forgetPassword()">{{ 'FORGET_PASSWORD.TITLE' | translate }}</button>
+      <div class="d-flex my-2">
+        <button mat-raised-button color="link" (click)="googleAuth()">
+          <img src="assets/img/logo/google.png" class="logo-button pr-2">
+          Google
+        </button>
+      </div>
+
+      <div class="d-flex">
+        <button mat-button color="accent" (click)="forgetPassword()" class="flex-1">
+          {{ 'FORGET_PASSWORD.TITLE' | translate }}
+        </button>
       </div>
     </ng-container>
 
     <ng-template #signUp>
-      <form class="d-flex flex-column gap-2" [formGroup]="signUpForm" (ngSubmit)="createAccount()">
+      <form class="d-flex flex-column gap-2 my-2" [formGroup]="signUpForm" (ngSubmit)="createAccount()">
         <mat-form-field>
           <input matInput type="email" formControlName="email" [placeholder]="'COMMON.MAIL' | translate">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="full-width-input">
           <input matInput type="text" formControlName="username" [placeholder]="'COMMON.USERNAME' | translate">
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="full-width-input">
           <input matInput type="password" formControlName="password" [placeholder]="'LOGIN.PASSWORD' | translate" [matTooltip]="'SIGNUP.PASSWORD_LENGTH' | translate">
           <mat-error *ngIf="signUpForm.get('password')?.errors">
             {{ 'SIGNUP.PASSWORD_LENGTH' | translate }}
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field>
+        <mat-form-field class="full-width-input">
           <input matInput type="password" formControlName="confirmPassword" [placeholder]="'SIGNUP.CONFIRM_PASSWORD' | translate"
             [errorStateMatcher]="passwordErrorMatcher">
           <mat-error *ngIf="signUpForm.hasError('passwordDontMatch')">
@@ -67,7 +76,9 @@
           <a (click)="switchPage('login')">{{ 'SIGNUP.HAVE_ACCOUNT' | translate }}</a>
         </div>
 
-        <button mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">{{ 'SIGNUP.SIGNUP' | translate }}</button>
+        <button class="full-width-input" mat-raised-button color="primary" type="submit" [disabled]="signUpForm.invalid">
+          {{ 'SIGNUP.SIGNUP' | translate }}
+        </button>
       </form>
     </ng-template>
   </div>
