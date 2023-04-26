@@ -19,7 +19,8 @@
     "ERROR": "Erreur à la création du compte",
     "EMAIL_ALREADY_USE": "Un compte existe déja avec cette adresse mail",
     "INVALID_EMAIL": "Adresse mail invalide",
-    "WEAK_PASSWORD": "Mot de passe pas assez sécurisé"
+    "WEAK_PASSWORD": "Mot de passe pas assez sécurisé",
+    "UNKNOWN_METHOD": "Méthode inconnue"
   },
   "FORGET_PASSWORD": {
     "TITLE": "Mot de passe oublié ?",

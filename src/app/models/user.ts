@@ -16,7 +16,10 @@ export class User {
 
   static setNewUserFromAuthProvider(credential: UserCredential) {
     const user: User = {
-      uuid: undefined, email: credential.user.email ? credential.user.email : '', username: credential.user.displayName ? credential.user.displayName: '', lastLogin: new Date()
+      uuid: undefined,
+      email: credential.user.email ? credential.user.email : '',
+      username: credential.user.displayName ? credential.user.displayName: '',
+      lastLogin: new Date()
     };
     return user;
   }

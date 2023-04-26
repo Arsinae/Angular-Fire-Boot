@@ -114,10 +114,10 @@ export class LoginComponent implements OnInit {
         newUser.uuid = credential.user.uid;
         this.storeUserInfo(newUser, credential.user.uid);
       } else {
-
+        this.snackbar.open(this.translate.instant(`SIGNUP.UNKNOWN_METHOD`), '', {panelClass: 'danger-snackbar', duration: 4000});
       }
     }).catch(err => {
-
+      this.snackbar.open(this.translate.instant(`LOGIN.ERROR`), '', {panelClass: 'danger-snackbar', duration: 4000});
     })
   }
 
