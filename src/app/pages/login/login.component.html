@@ -31,11 +31,10 @@
 
       </form>
 
-
-      <div class="buttons-list">
+      <div class="d-flex">
         <button mat-raised-button (click)="googleAuth()">Google</button>
 
-        <button mat-button color="accent" (click)="forgetPassword()">{{ 'FORGET_PASSWORD.TITLE' | translate }}</button>
+        <button mat-button class="flex-1" color="accent" (click)="forgetPassword()">{{ 'FORGET_PASSWORD.TITLE' | translate }}</button>
       </div>
     </ng-container>
 
